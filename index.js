@@ -12,7 +12,10 @@ const prisma = new PrismaClient({datasources: {
 });
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin: ["https://accre-frontend.vercel.app/"],
+    credentials: true
+}));
 app.post('/api/referrals', async (req, res) => {
   const { referrerName, referrerEmail, refereeName, refereeEmail } = req.body;
 
